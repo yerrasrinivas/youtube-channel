@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="../../favicon.ico" />
+
+<title>Navbar Template for Bootstrap</title>
+
+<!-- Bootstrap core CSS -->
+<link href="../static/css/bootstrap.css" rel="stylesheet"
+	th:href="@{/css/bootstrap.css}" />
+</head>
+<body>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Id</th>
+				<th scope="col">Firstname</th>
+				<th scope="col">Lastname</th>
+				<th scope="col">Email</th>
+				<th scope="col">Address</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:if="${users.empty}">
+				<td colspan="2">No users Available</td>
+			</tr>
+			<tr th:each="user : ${users}">
+				<td><span th:text="${user.id}">Id</span></td>
+				<td><span th:text="${user.firstname}">Firstname</span></td>
+				<td><span th:text="${user.lastname}">Lastname</span></td>
+				<td><span th:text="${user.email}">Email</span></td>
+				<td>
+					<span th:text="${user.country}">Country</span>
+					<span>||</span>
+					<span th:text="${user.state}">State</span>
+					<span>||</span>
+					<span th:text="${user.zip}">Zip</span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
